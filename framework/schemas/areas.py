@@ -48,3 +48,14 @@ areas_countries_schema = {
         "required": ["id", "name", "url"],
     },
 }
+
+areas_specific_schema = {
+    "type": "object",
+    "properties": {
+        "areas": {"type": "array", "items": {}},
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "parent_id": {"type": "string"},
+    },
+    "required": ["areas", "id", "name", "parent_id"],
+}

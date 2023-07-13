@@ -11,7 +11,7 @@ class AreasClient(ApiClient):
 
     @staticmethod
     def get_areas_by_id(area_id: int, status_code: int = 200):
-        path = AreasClient.path + str(area_id)
+        path = AreasClient.path + "/" + str(area_id)
         data = AreasClient.get(path=path, status_code=status_code)
         return data.json()
 
