@@ -6,4 +6,3 @@ class AreasVerificator:
     @staticmethod
     def validate_schema(content):
         jsonschema.validate(content, areas_schema)
-        pass
