@@ -55,7 +55,19 @@ areas_specific_schema = {
         "areas": {"type": "array", "items": {}},
         "id": {"type": "string"},
         "name": {"type": "string"},
-        "parent_id": {"type": "string"},
+        "parent_id": {"type": ["string", "null"]},
     },
     "required": ["areas", "id", "name", "parent_id"],
+}
+
+area_additional_case_schema = {
+    "type": "object",
+    "properties": {
+        "areas": {"type": "array", "items": {}},
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "name_prepositional": {"type": "string"},
+        "parent_id": {"type": ["string", "null"]},
+    },
+    "required": ["areas", "id", "name", "name_prepositional", "parent_id"],
 }

@@ -1,3 +1,4 @@
 pytest>=7.4.0
 requests>=2.31.0
 jsonschema>=4.18.2
+wonderwords>=2.2.0
