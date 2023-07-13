@@ -1,9 +1,10 @@
 from framework.handlers.areas import AreasClient
+from framework.verificators.areas import AreasVerificator
 
 
 class TestAreas:
     def test_get_areas(self):
-        result = AreasClient.get_areas()
-
-        assert result
+        content = AreasClient.get_areas()
+        AreasVerificator.validate_schema(content=content)
+        assert content
         pass

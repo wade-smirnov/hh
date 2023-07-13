@@ -7,4 +7,4 @@ class AreasClient(ApiClient):
     @staticmethod
     def get_areas():
         data = AreasClient.get(AreasClient.path)
-        return data
+        return data.json()
