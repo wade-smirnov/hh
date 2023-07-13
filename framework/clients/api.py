@@ -10,3 +10,15 @@ class ApiClient:
     def get(path: str) -> requests.Response:
         url = ApiClient.url + path
         return requests.get(url)
+
+    @staticmethod
+    @status_code_check
+    def post(path: str, data: dict) -> requests.Response:
+        url = ApiClient.url + path
+        return requests.post(url, data=data)
+
+    @staticmethod
+    @status_code_check
+    def put(path: str, data: dict) -> requests.Response:
+        url = ApiClient.url + path
+        return requests.put(url, data=data)
