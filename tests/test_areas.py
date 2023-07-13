@@ -1,6 +1,9 @@
+from framework.handlers.areas import AreasClient
 
 
 class TestAreas:
     def test_get_areas(self):
-        assert 1
+        result = AreasClient.get_areas()
+
+        assert result
         pass
