@@ -5,3 +5,7 @@ class CitiesIds:
 
 class CountriesNames:
     russia = "Россия"
+
+
+class SearchString:
+    default = "Мой офис"

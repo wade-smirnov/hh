@@ -2,7 +2,7 @@ import allure
 import random
 import math
 
-from framework.constants import CitiesIds, CountriesNames
+from framework.constants import CitiesIds, CountriesNames, SearchString
 from framework.handlers.employers import EmployersClient
 from framework.helpers.areas import AreasHelper
 from framework.verificators.employers import EmployersVerificator
@@ -39,16 +39,16 @@ class TestAreas:
             assert page == returned_page, f"Expected {page} page, got {returned_page}"
 
     @allure.title("Test /employers 'Мой офис' string search with different register")
-    def test_search_employers(self):
+    def test_search_employers_different_register(self):
         different_register = EmployersClient.get_employers(text="Мой офис")
-        lower_register = EmployersClient.get_employers(text="Мой офис".lower())
-        upper_register = EmployersClient.get_employers(text="Мой офис".upper())
+        lower_register = EmployersClient.get_employers(text=SearchString.default.lower())
+        upper_register = EmployersClient.get_employers(text=SearchString.default.upper())
         assert (
             different_register == lower_register == upper_register
         ), "Results differ, depending on register"
 
     @allure.title("Test /employers text search with area filter")
-    def test_search_employers(self, areas_countries_data, areas_data):
+    def test_search_employers_area_filter(self, areas_countries_data, areas_data):
         with allure.step("Test data preparation"):
             russian_area = AreasHelper.get_area_by_country_name(
                 areas_countries_data=areas_countries_data, name=CountriesNames.russia
@@ -56,10 +56,10 @@ class TestAreas:
 
         with allure.step("Requests to /employers with area filter"):
             russian_area_response = EmployersClient.get_employers(
-                text="Мой офис", area=russian_area.get("id")
+                text=SearchString.default, area=russian_area.get("id")
             )
             saint_petersburg_response = EmployersClient.get_employers(
-                text="Мой офис", area=CitiesIds.saint_petersburg
+                text=SearchString.default, area=CitiesIds.saint_petersburg
             )
 
         with allure.step("/employers with area filter logic check"):
