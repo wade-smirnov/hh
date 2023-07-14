@@ -7,9 +7,14 @@ class ApiClient:
 
     @staticmethod
     @status_code_check
-    def get(path: str) -> requests.Response:
-        url = ApiClient.url + path
-        return requests.get(url)
+    def get(
+        path: str | None = None,
+        url: str | None = None,
+        params: dict | None = None,
+        headers: dict | None = None,
+    ) -> requests.Response:
+        url = url or ApiClient.url + path
+        return requests.get(url=url, params=params, headers=headers)
 
     @staticmethod
     @status_code_check

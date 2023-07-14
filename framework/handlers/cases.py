@@ -1,15 +1,17 @@
-import requests
+from framework.clients.api import ApiClient
 
 
-class CasesClient:
+class CasesClient(ApiClient):
     url = "https://ws3.morpher.ru/russian/declension"
 
     @staticmethod
-    def get_prepositional_case(word: str):
+    def get_prepositional_case(word: str) -> dict:
         headers = {"User-Agent": "My Python script"}
         params = dict(
             s=word,
             format="json",
         )
-        data = requests.get(url=CasesClient.url, headers=headers, params=params)
+        data = CasesClient.get(
+            url=CasesClient.url, headers=headers, params=params, status_code=200
+        )
         return data.json()
