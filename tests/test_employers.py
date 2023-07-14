@@ -9,7 +9,7 @@ from framework.verificators.employers import EmployersVerificator
 
 
 @allure.feature("Getting employers info")
-class TestAreas:
+class TestEmployers:
     @allure.title("Test full /employers response")
     def test_get_employers_full(self):
         with allure.step("Test data preparation"):
@@ -32,7 +32,7 @@ class TestAreas:
             expected_pages = math.ceil(response_data.get("found") / per_page)
             return_pages = response_data.get("pages")
             assert (
-                expected_pages == return_pages
+                0
             ), f"Expected {expected_pages} as number of pages, got {return_pages}"
 
             returned_page = response_data.get("page")
@@ -41,8 +41,12 @@ class TestAreas:
     @allure.title("Test /employers 'Мой офис' string search with different register")
     def test_search_employers_different_register(self):
         different_register = EmployersClient.get_employers(text="Мой офис")
-        lower_register = EmployersClient.get_employers(text=SearchString.default.lower())
-        upper_register = EmployersClient.get_employers(text=SearchString.default.upper())
+        lower_register = EmployersClient.get_employers(
+            text=SearchString.default.lower()
+        )
+        upper_register = EmployersClient.get_employers(
+            text=SearchString.default.upper()
+        )
         assert (
             different_register == lower_register == upper_register
         ), "Results differ, depending on register"
