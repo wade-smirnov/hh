@@ -28,3 +28,9 @@ class AreasHelper:
             else:
                 ids_list.append(int(element.get("id")))
         return ids_list
+
+    @staticmethod
+    def get_area_by_country_name(areas_countries_data: list, name: str) -> dict:
+        for area in areas_countries_data:
+            if area.get("name") == name:
+                return area
