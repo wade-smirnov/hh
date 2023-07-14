@@ -30,10 +30,10 @@ class TestEmployers:
             ), f"Number of returned items is {number_of_returned_items}, expected {per_page}"
 
             expected_pages = math.ceil(response_data.get("found") / per_page)
-            return_pages = response_data.get("pages")
+            returned_pages = response_data.get("pages")
             assert (
-                0
-            ), f"Expected {expected_pages} as number of pages, got {return_pages}"
+                expected_pages == returned_pages
+            ), f"Expected {expected_pages} as number of pages, got {returned_pages}"
 
             returned_page = response_data.get("page")
             assert page == returned_page, f"Expected {page} page, got {returned_page}"
@@ -71,3 +71,14 @@ class TestEmployers:
                 assert employer in russian_area_response.get(
                     "items"
                 ), "Some employers from city are not presented in search results for country"
+
+    @allure.title("Test failing of framwork test")
+    def test_fail_step(self):
+        with allure.step("Imitating data preparation"):
+            pass
+
+        with allure.step("Some steps before fail"):
+            pass
+
+        with allure.step("Step that failed"):
+            assert 0

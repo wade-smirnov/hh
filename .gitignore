@@ -5,4 +5,3 @@ Scripts
 Include
 pyvenv.cfg
 tests/reports/*
-!tests/reports/allure_info_to_html.py
