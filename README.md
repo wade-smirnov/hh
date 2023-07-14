@@ -10,3 +10,4 @@ pip install -r requirements-dev.txt
 
 test with 
 pytest tests
+pytest tests/ --html-report=tests/reports
