@@ -17,7 +17,7 @@
 
 ### to get detailed html report first run
 `python -m pytest tests --alluredir=tests/reports --html-report=tests/reports`
--s -v -n=2
+
 ### then
 `python ./allure_info_to_html.py`
 
