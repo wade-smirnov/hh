@@ -11,13 +11,13 @@ class AreasHelper:
             return selected_variant
 
     @staticmethod
-    def get_nonexistent_area_id(areas_data: list):
+    def get_nonexistent_area_id(areas_data: list) -> int:
         all_area_ids = AreasHelper.get_all_area_ids(areas_data=areas_data)
         nonexistent_id = max(all_area_ids) + 1000
         return nonexistent_id
 
     @staticmethod
-    def get_all_area_ids(areas_data: list):
+    def get_all_area_ids(areas_data: list) -> list[int]:
         ids_list = []
         for element in areas_data:
             if len(element.get("areas")) > 0:

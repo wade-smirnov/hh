@@ -1,9 +1,10 @@
 import functools
+import requests
 
 
-def status_code_check(func):
+def status_code_check(func: callable) -> callable:
     @functools.wraps(func)
-    def function(*args, **kwargs):
+    def function(*args, **kwargs) -> requests.Response:
         expected_status_code = kwargs.pop("status_code")
         returned_value = func(*args, **kwargs)
         assert (

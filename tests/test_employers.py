@@ -72,7 +72,7 @@ class TestEmployers:
                     "items"
                 ), "Some employers from city are not presented in search results for country"
 
-    @allure.title("Test failing of framwork test")
+    @allure.title("Test failing of framework test")
     def test_fail_step(self):
         with allure.step("Imitating data preparation"):
             pass

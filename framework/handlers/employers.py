@@ -14,7 +14,7 @@ class EmployersClient(ApiClient):
         only_with_vacancies: bool | None = None,
         page: int = 0,
         per_page: int = 100,
-    ):
+    ) -> dict:
         params = {
             "text": text,
             "area": area,
