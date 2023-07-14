@@ -1,22 +1,22 @@
 # hh
-Test assignment hh.ru API
+This is a test assignment project for two handlers of hh.ru API
 
+##This project uses version of Python 3.11.*
 
-to run
-pip install -r requirements.txt
+##you can install requirements using
+`pip install -r requirements.txt`
 
-for dev
-pip install -r requirements-dev.txt
+##dev requirements can be installed via
+`pip install -r requirements-dev.txt`
 
-test with 
-pytest tests
+##run tests with 
+`pytest tests`
 
-test with small report
-pytest tests/ --html-report=tests/reports
+##to run tests with small html report please use
+`pytest tests/ --html-report=tests/reports`
 
-test with detailed report
-first run
-python -m pytest tests/test_employers.py --alluredir=tests/reports --html-report=tests/reports
-then
-python ./allure_info_to_html.py
+##to get detailed html report first run
+`python -m pytest tests/test_employers.py --alluredir=tests/reports --html-report=tests/reports`
+##then
+`python ./allure_info_to_html.py`
 

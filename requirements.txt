@@ -4,3 +4,4 @@ jsonschema>=4.18.2
 wonderwords>=2.2.0
 pytest-html-reporter>=0.2.9
 json2html>=1.3.0
+allure-pytest>=2.13.2
