@@ -6,14 +6,14 @@ from framework.utils import random_word, morph_word_to_prepositinal_case
 from framework.verificators.areas import AreasVerificator
 
 
-@allure.feature("/areas")
+@allure.feature("Getting info about available areas")
 class TestAreas:
-    @allure.title("Test full default /areas response")
+    @allure.title("Test full /areas response")
     def test_get_areas_full(self):
         response_data = AreasClient.get_areas()
 
         assert response_data, "Response body is empty"
-        AreasVerificator.validate_areas_schema(content=response_data)
+        AreasVerificator.validate_areas_schema(data=response_data)
         areas_ids = AreasHelper.get_all_area_ids(areas_data=response_data)
         assert len(areas_ids) == len(set(areas_ids)), "Response area ids are not unique"
         # assert db_data == response_data, "Response data is not matching data from db (currently no access to db)"
@@ -25,7 +25,7 @@ class TestAreas:
 
         with allure.step("Request to /areas/id and check"):
             response_data = AreasClient.get_areas_by_id(area_id=expected_data.get("id"))
-            AreasVerificator.validate_specific_area_schema(content=response_data)
+            AreasVerificator.validate_specific_area_schema(data=response_data)
             assert (
                 response_data == expected_data
             ), "Returned content is not mathing expected one"
@@ -50,7 +50,7 @@ class TestAreas:
             response_data = AreasClient.get_areas_additional_case(
                 area_id=random_area_id
             )
-            AreasVerificator.validate_additional_case_schema(content=response_data)
+            AreasVerificator.validate_additional_case_schema(data=response_data)
 
         with allure.step("Morphing area name to prepositional case"):
             word = response_data.get("name")
@@ -77,5 +77,5 @@ class TestAreas:
     def test_get_areas_countries(self):
         response_data = AreasClient.get_areas_countries()
         assert response_data, "Response body is empty"
-        AreasVerificator.validate_countries_schema(content=response_data)
+        AreasVerificator.validate_countries_schema(data=response_data)
         # assert db_data == response_data, "Response data is not matching data from db (currently no access to db)"

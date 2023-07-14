@@ -1,3 +1,5 @@
+import urllib.parse
+
 from framework.clients.api import ApiClient
 
 
@@ -20,5 +22,7 @@ class EmployersClient(ApiClient):
             "page": page,
             "per_page": per_page,
         }
-        data = EmployersClient.get(path=EmployersClient.path, status_code=status_code, params=params)
+        data = EmployersClient.get(
+            path=EmployersClient.path, status_code=status_code, params=params
+        )
         return data.json()
