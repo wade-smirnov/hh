@@ -9,6 +9,8 @@ current_directory = os.getcwd() + '\\tests\\reports\\'
 files_list = os.listdir(current_directory)
 report = [file for file in files_list if file[-5:] == ".html"][0]
 json_files = [file for file in files_list if file[-11:] == "result.json"]
+container_files = [file for file in files_list if file[-14:] == "container.json"]
+
 
 
 # Removing unnessesary info
@@ -66,5 +68,7 @@ with open(current_directory + report, "w", encoding="utf8") as report_stream:
     report_stream.write(report_data)
 
 # Removing old json reports
-for file in json_files:
+for file in json_files + container_files:
     os.remove(current_directory + file)
+
+print('\n***Done***\n')

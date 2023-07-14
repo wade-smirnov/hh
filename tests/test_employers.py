@@ -81,4 +81,4 @@ class TestEmployers:
             pass
 
         with allure.step("Step that failed"):
-            assert 0
+            assert 0, "This test case was intented to fail"
