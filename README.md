@@ -7,7 +7,7 @@
 `pip install -r requirements.txt`
 
 #### dev requirements can be installed via
-`pip install -r requirements-dev.txt`
+`pip install -r requirements_dev.txt`
 
 #### run tests with 
 `pytest tests`
