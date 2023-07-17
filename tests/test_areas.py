@@ -19,7 +19,7 @@ class TestAreas:
         # assert db_data == response_data, "Response data is not matching data from db (currently no access to db)"
 
     @allure.title("Test get area by id (areas/id)")
-    def test_get_areas_by_id(self, areas_data: list):
+    def test_get_areas_by_id(self, areas_data: dict):
         with allure.step("Test data preparation"):
             expected_data = AreasHelper.get_random_area(areas_data=areas_data)
 
@@ -31,7 +31,7 @@ class TestAreas:
             ), "Returned content is not mathing expected one"
 
     @allure.title("Test get area by nonexistent id (negative)")
-    def test_get_areas_specific_negative(self, areas_data: list):
+    def test_get_areas_specific_negative(self, areas_data: dict):
         nonexistent_area_id = AreasHelper.get_nonexistent_area_id(areas_data=areas_data)
         response_data = AreasClient.get_areas_by_id(
             area_id=nonexistent_area_id, status_code=404
@@ -41,7 +41,7 @@ class TestAreas:
         ), "Response error message does not match expected one"
 
     @allure.title("Test get additional case for area by id areas/id/?additional_case")
-    def test_get_areas_additional_case(self, areas_data: list):
+    def test_get_areas_additional_case(self, areas_data: dict):
         with allure.step("Test data preparation"):
             expected_data = AreasHelper.get_random_area(areas_data=areas_data)
             random_area_id = expected_data.get("id")
@@ -63,7 +63,7 @@ class TestAreas:
             ), "Returned content is not mathing expected one"
 
     @allure.title("Test get area additional by nonexistent id (negative)")
-    def test_get_areas_additional_case_negative(self, random_area_id):
+    def test_get_areas_additional_case_negative(self, random_area_id: int):
         case = random_word()
         response_data = AreasClient.get_areas_additional_case(
             area_id=random_area_id, additional_case=case, status_code=400
