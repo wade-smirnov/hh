@@ -26,3 +26,5 @@
 #### then
 `python ./allure_info_to_html.py`
 
+## Prep for Pereocenka
+
